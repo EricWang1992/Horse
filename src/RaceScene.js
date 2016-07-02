@@ -5,7 +5,6 @@
 var RaceLayer = cc.Layer.extend({
     bgSprite: null,
     node_num: null,
-    sp_content: null,
     sp_num_vector: null,
     sp_horse_vector: null,
     cur_info: null,
@@ -29,7 +28,8 @@ var RaceLayer = cc.Layer.extend({
     minute: null,
     second: null,
     current_stage: null,
-
+    _scrollview : null,
+    _zhalan : null,
     ctor: function () {
         this._super();
 
@@ -56,15 +56,19 @@ var RaceLayer = cc.Layer.extend({
         this.label_tips = cc.LabelTTF.create("", "", 30);
         this.label_tips.setPosition(size.width/2, size.height/2);
         this.label_tips.setVisible(this.time_count_down > 0);
+
+        //debug
+        this.time_count_down = 3;
+
         if (this.time_count_down > 0 && this.time_count_down < 100000)
         {
-            this.label_tips.setString("距离下次游戏开始还有" + this.time_count_down + "s");
+            this.label_tips.setString("本期游戏还有" + this.time_count_down + "s" + "开始");
         }
         else
         {
             this.label_bg.setVisible(true);
             this.label_tips.setVisible(true);
-            this.label_tips.setString("配置文件过时，请刷新重试");
+            this.label_tips.setString("本期尚未开始");
         }
 
         this.addChild(this.label_tips, 11);
@@ -83,15 +87,7 @@ var RaceLayer = cc.Layer.extend({
         });
         this.addChild(this.bgSprite);
 
-
-        //Content
-        this.sp_content = cc.Sprite.create(res.Content_png);
-        this.sp_content.attr({
-            x: -480,
-            y: size.height/2 + 20
-        });
-        this.addChild(this.sp_content);
-
+        this.createScrollView();
 
         //node_num
         this.node_num = [];
@@ -119,7 +115,7 @@ var RaceLayer = cc.Layer.extend({
             var label_bg = cc.Sprite.create(res.CountDown_png);
             label_bg.setPosition(size.width/2, size.height/2);
             this.addChild(label_bg);
-            var label_tips = cc.LabelTTF.create("未找到配置文件,请稍候再试", "", 40);
+            var label_tips = cc.LabelTTF.create("本期尚未开始", "", 40);
             label_tips.setPosition(size.width/2, size.height/2);
             this.addChild(label_tips);
         }
@@ -142,6 +138,59 @@ var RaceLayer = cc.Layer.extend({
         //刷新界面显示
         this.refreshInfo();
     },
+    createScrollView: function () {
+        var spX = 0;
+        var spY = 0;
+        var width = 0;
+
+
+        var frame = cc.spriteFrameCache.getSpriteFrame("content_1.png");
+        var sp1 = cc.Sprite.create(frame);
+        spX = sp1.getContentSize().width;
+        spY = sp1.getContentSize().height;
+
+        var container = new cc.Layer();
+        container.setContentSize(cc.size(spX*3, spY));
+
+        //左边
+        sp1.setPosition(spX/2.0, spY/2.0);
+        container.addChild(sp1);
+        width += spX;
+
+        //中间
+        for(var i = 0; i < 4; i++)
+        {
+            frame = cc.spriteFrameCache.getSpriteFrame("content_2.png");
+            var sp2 = cc.Sprite.create(frame);
+            sp2.setPosition(spX/2.0 + width, spY/2.0);
+            container.addChild(sp2);
+            width += spX;
+        }
+
+
+        //右边
+        frame = cc.spriteFrameCache.getSpriteFrame("content_3.png");
+        var sp3 = cc.Sprite.create(frame);
+        sp3.setPosition(spX/2.0 + width, spY/2.0);
+        width += spX;
+        container.addChild(sp3);
+
+        //栅栏
+        frame = cc.spriteFrameCache.getSpriteFrame("zha_00000.png");
+        this._zhalan = cc.Sprite.create(frame);
+        this._zhalan.setPosition(width - 215, spY/2.0-25);
+        container.addChild(this._zhalan);
+
+
+        this._scrollview = new cc.ScrollView(container.getContentSize(), container);
+        this._scrollview.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
+        this._scrollview.setTouchEnabled(false);
+
+        this._scrollview.setPosition(0, 20);
+        this._scrollview.setContentOffset(cc.p(-5*spX,0), false);
+        this.addChild(this._scrollview);
+    },
+
     createTime: function () {
         var date = new Date();
         date.setYear(this.year);
@@ -152,6 +201,7 @@ var RaceLayer = cc.Layer.extend({
         date.setSeconds(this.second);
         return date;
     },
+
     startGame: function () {
         var size = cc.winSize;
 
@@ -163,21 +213,22 @@ var RaceLayer = cc.Layer.extend({
         this.horseReset();
         cc.audioEngine.playEffect(res.Sound2, true);
         this.horseRun();
-        this.scheduleOnce(this.updateContent, 0);
+        this._scrollview.setContentOffsetInDuration(cc.p(0,0),10);
         this.scheduleUpdate();
         this.scheduleOnce(function () {
             this.unscheduleUpdate();
-        }, 5.0);
-        this.scheduleOnce(this.reachTheTarget, 5.0);
+        }, 10.0);
+        this.scheduleOnce(this.reachTheTarget, 10.0);
     },
 
     finishGame: function () {
         cc.audioEngine.stopAllEffects();
         this.time_count_down = 0;
 
+        this._scrollview.setContentOffset(cc.p(-5*960,0),false);
         this.label_bg.setVisible(true);
         this.label_tips.setVisible(true);
-        this.label_tips.setString("游戏结束");
+        this.label_tips.setString("本期已结束");
         this.showReward();
     },
 
@@ -195,19 +246,17 @@ var RaceLayer = cc.Layer.extend({
         var result = [];
         for (var i = 0; i < 3; i++)
         {
-            var tag = this.target_arr[i].tag + 1;
-            var sp_dir = "res/horse" + tag + ".png";
-            var sp = cc.Sprite.create(sp_dir);
-            sp.setScale(0.5);
-            result.push(sp);
+            var horse = new Horse(this.target_arr[i].tag, 2);
+            horse.setScale(0.9);
+            result.push(horse);
         }
-        result[0].setPosition(size.width/2, size.height/2 + 100);
+        result[0].setPosition(size.width/2, size.height/2 + 80);
         result[1].setPosition(size.width/2 - 200, size.height/2 + 50);
-        result[2].setPosition(size.width/2 + 200, size.height/2 + 50);
+        result[2].setPosition(size.width/2 + 200, size.height/2 + 30);
         for (var key in result)
         {
             rewardBoard.addChild(result[key]);
-            result[key].runAction(cc.repeatForever(cc.sequence(cc.scaleTo(1.5, -0.5, 0.5), cc.scaleTo(1.5,0.5,0.5))));
+            result[key].onJumpAction();
         }
         this.runAction(cc.sequence(cc.delayTime(10), cc.callFunc(function () {
             rewardBoard.removeAllChildren();
@@ -223,6 +272,24 @@ var RaceLayer = cc.Layer.extend({
             var size = cc.winSize;
 
         },this)));
+    },
+
+    zhanlanAction : function () {
+        //栅栏动画
+        var animation = new cc.Animation();
+        for (var i = 0; i <= 5; i++)
+        {
+            var frameName = "zha_0000" + i + ".png";
+            var frame = cc.spriteFrameCache.getSpriteFrame(frameName);
+            animation.addSpriteFrame(frame);
+        }
+        animation.setDelayPerUnit(0.1);
+        animation.setRestoreOriginalFrame(true);
+        var action = cc.animate(animation);
+        if (this._zhalan != null)
+        {
+            // this._zhalan.runAction(action);
+        }
     },
 
     getDateString: function (type) {
@@ -265,7 +332,6 @@ var RaceLayer = cc.Layer.extend({
         this.Label_next_time.setString(this.getDateString(2));
     },
 
-
     horseReset: function () {
         var size = cc.winSize;
         var offsetX = 225;
@@ -275,6 +341,7 @@ var RaceLayer = cc.Layer.extend({
             for (var i = 0; i < this.sp_horse_vector.length; i++)
             {
                 this.sp_horse_vector[i].setPosition(size.width - offsetX + i * 13.4, size.height - offsetY - i * 30);
+                this.sp_horse_vector[i].stopAllActions();
             }
         }
         for (var i in this.node_num)
@@ -282,16 +349,16 @@ var RaceLayer = cc.Layer.extend({
             this.node_num[i].removeAllChildren();
         }
 
-        this.sp_content.setPosition(-480, size.height/2 + 20);
     },
-
 
     addAllNum: function () {
         var size = cc.winSize;
         var idx = 0;
-        for(var i in num_vector)
+        for(var i = 1; i <= 10; i++)
         {
-            var sp = cc.Sprite.create(num_vector[i]);
+            var sp_name = "num_" + i + ".png";
+            var frame = cc.spriteFrameCache.getSpriteFrame(sp_name);
+            var sp = cc.Sprite.create(frame);
             this.sp_num_vector.push(sp);
             this.node_num[idx].addChild(sp);
             idx++;
@@ -299,18 +366,17 @@ var RaceLayer = cc.Layer.extend({
         var offsetX = 225;
         var offsetY = 180;
         idx = 0;
-        for(var i in horse_vector)
+        for(var i = 0; i < 10; ++i)
         {
-            var sp = cc.Sprite.create(horse_vector[i]);
-            sp.setScale(0.23,0.2);
-            sp.setPosition(size.width - offsetX + idx * 13.4, size.height - offsetY - idx * 30);
-            sp.tag = idx;
+            var horse = new Horse(i, 1);
+            horse.setScale(0.55);
+            horse.setPosition(size.width - offsetX + idx * 13.4, size.height - offsetY - idx * 30);
+            horse.tag = idx;
             idx++;
-            this.sp_horse_vector.push(sp);
-            this.addChild(sp);
+            this.sp_horse_vector.push(horse);
+            this.addChild(horse);
         }
     },
-
 
     resetHorseVector:function () {
       this.sp_horse_vector.sort(this.sortByTag);
@@ -318,12 +384,6 @@ var RaceLayer = cc.Layer.extend({
 
     sortByTag: function (a, b) {
         return a.tag > b.tag;
-    },
-
-    updateContent: function () {
-        var size = cc.winSize;
-        var moveTo = cc.MoveTo.create(4.5, cc.p(1440, size.height/2 + 20));
-        this.sp_content.runAction(moveTo);
     },
 
     horseRun: function () {
@@ -342,13 +402,13 @@ var RaceLayer = cc.Layer.extend({
         var size = cc.winSize;
         var offsetY = 180;
         this.target_arr = [];
-        var tempRandom = 5;
+        var tempRandom = 10;
         for (var i = 0; i < this.sp_horse_vector.length; i++)
         {
-            var random = 5;
+            var random = 10;
             for(;;)
             {
-                random = 5 + cc.random0To1();
+                random = 10 + cc.random0To1();
                 if (random > tempRandom)
                 {
                     break;
@@ -363,6 +423,7 @@ var RaceLayer = cc.Layer.extend({
 
             var currentPosX = this.sp_horse_vector[i].getPositionX();
             var move = this.createActions(random - i*0.02, currentPosX, 630 + i * 10, size.height - offsetY - i * 30);
+            this.sp_horse_vector[i].onRunAction();
             this.sp_horse_vector[i].runAction(move);
         }
     },
@@ -374,7 +435,7 @@ var RaceLayer = cc.Layer.extend({
         this.target_arr = [];
         for (var i = 0; i < this.sp_horse_vector.length; i++)
         {
-            var random = cc.random0To1() + 5;
+            var random = cc.random0To1() + 10;
             this.sp_horse_vector[i]._random = random;
 
 
@@ -382,6 +443,7 @@ var RaceLayer = cc.Layer.extend({
 
             var currentPosX = this.sp_horse_vector[i].getPositionX();
             var move = this.createActions(random - i*0.02, currentPosX, 630 + i * 10, size.height - offsetY - i * 30);
+            this.sp_horse_vector[i].onRunAction();
             this.sp_horse_vector[i].runAction(move);
         }
     },
@@ -470,11 +532,15 @@ var RaceLayer = cc.Layer.extend({
     //总的定时器
     updateTime:function () {
         this.time_count_down--;
-        this.label_tips.setString("距离下次游戏开始还有" + this.time_count_down + "s");
+        this.label_tips.setString("本期游戏还有" + this.time_count_down + "s" + "开始");
 
         if (this.time_count_down == 2)
         {
             cc.audioEngine.playEffect(res.Sound1);
+        }
+        if (this.time_count_down == 1)
+        {
+            this.zhanlanAction();
         }
         if (this.time_count_down == 0)
         {
@@ -510,6 +576,10 @@ var RaceLayer = cc.Layer.extend({
 var RaceScene = cc.Scene.extend({
     onEnter: function () {
         this._super();
+        cc.spriteFrameCache.addSpriteFrames("res/Horse.plist", "res/Horse.png");
+        cc.spriteFrameCache.addSpriteFrames(res.Grass_plist, res.Grass_png);
+        cc.spriteFrameCache.addSpriteFrames(num_vector.num_plist, num_vector.num_png);
+        cc.spriteFrameCache.addSpriteFrames(res.HorseJump_plist, res.HorseJump_png);
         var layer = new RaceLayer();
         this.addChild(layer);
     }
