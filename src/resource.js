@@ -14,7 +14,8 @@ var res = {
     Horse_plist : "res/Horse.plist",
     Horse_png : "res/Horse.png",
     HorseJump_plist : "res/Horse_jump.plist",
-    HorseJump_png : "res/Horse_jump.png"
+    HorseJump_png : "res/Horse_jump.png",
+    Zhalan_Front_png: "res/zhalan_front.png"
 };
 var num_vector = {
     num_plist : "res/num.plist",

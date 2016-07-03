@@ -30,6 +30,7 @@ var RaceLayer = cc.Layer.extend({
     current_stage: null,
     _scrollview : null,
     _zhalan : null,
+    _zhalan_front : null,
     ctor: function () {
         this._super();
 
@@ -58,7 +59,7 @@ var RaceLayer = cc.Layer.extend({
         this.label_tips.setVisible(this.time_count_down > 0);
 
         //debug
-        this.time_count_down = 3;
+        // this.time_count_down = 3;
 
         if (this.time_count_down > 0 && this.time_count_down < 100000)
         {
@@ -103,6 +104,8 @@ var RaceLayer = cc.Layer.extend({
         }
         //添加所有数字
         this.addAllNum();
+
+        this.initZhaLan();
 
         //时间控制
         if (this.time_count_down > 0 && this.time_count_down < 100000)
@@ -176,10 +179,10 @@ var RaceLayer = cc.Layer.extend({
         container.addChild(sp3);
 
         //栅栏
-        frame = cc.spriteFrameCache.getSpriteFrame("zha_00000.png");
-        this._zhalan = cc.Sprite.create(frame);
-        this._zhalan.setPosition(width - 215, spY/2.0-25);
-        container.addChild(this._zhalan);
+        // frame = cc.spriteFrameCache.getSpriteFrame("zha_00000.png");
+        // this._zhalan = cc.Sprite.create(frame);
+        // this._zhalan.setPosition(width - 215, spY/2.0-25);
+        // container.addChild(this._zhalan);
 
 
         this._scrollview = new cc.ScrollView(container.getContentSize(), container);
@@ -189,6 +192,18 @@ var RaceLayer = cc.Layer.extend({
         this._scrollview.setPosition(0, 20);
         this._scrollview.setContentOffset(cc.p(-5*spX,0), false);
         this.addChild(this._scrollview);
+    },
+
+    initZhaLan: function () {
+        var size = cc.winSize;
+        var frame =cc.spriteFrameCache.getSpriteFrame("zha_00000.png");
+        this._zhalan = cc.Sprite.create(frame);
+        this._zhalan.setPosition(size.width - 215, size.height/2.0-10);
+        this.addChild(this._zhalan);
+
+        this._zhalan_front = cc.Sprite.create(res.Zhalan_Front_png);
+        this._zhalan_front.setPosition(size.width/2.0, size.height/2.0 + 20);
+        this.addChild(this._zhalan_front);
     },
 
     createTime: function () {
@@ -213,6 +228,12 @@ var RaceLayer = cc.Layer.extend({
         this.horseReset();
         cc.audioEngine.playEffect(res.Sound2, true);
         this.horseRun();
+        this.scheduleOnce(function () {
+            this._zhalan.runAction(cc.moveBy(1,cc.p(480,0)));
+            this._zhalan_front.runAction(cc.moveBy(1,cc.p(480,0)));
+        });
+
+
         this._scrollview.setContentOffsetInDuration(cc.p(0,0),10);
         this.scheduleUpdate();
         this.scheduleOnce(function () {
@@ -229,6 +250,7 @@ var RaceLayer = cc.Layer.extend({
         this.label_bg.setVisible(true);
         this.label_tips.setVisible(true);
         this.label_tips.setString("本期已结束");
+        this.initZhaLan();
         this.showReward();
     },
 
@@ -277,18 +299,18 @@ var RaceLayer = cc.Layer.extend({
     zhanlanAction : function () {
         //栅栏动画
         var animation = new cc.Animation();
-        for (var i = 0; i <= 5; i++)
+        for (var i = 0; i < 5; i++)
         {
             var frameName = "zha_0000" + i + ".png";
             var frame = cc.spriteFrameCache.getSpriteFrame(frameName);
             animation.addSpriteFrame(frame);
         }
         animation.setDelayPerUnit(0.1);
-        animation.setRestoreOriginalFrame(true);
+        animation.setRestoreOriginalFrame(false);
         var action = cc.animate(animation);
         if (this._zhalan != null)
         {
-            // this._zhalan.runAction(action);
+            this._zhalan.runAction(action);
         }
     },
 
