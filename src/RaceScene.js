@@ -104,8 +104,8 @@ var RaceLayer = cc.Layer.extend({
         }
         //添加所有数字
         this.addAllNum();
+        this.horseinit();
 
-        this.initZhaLan();
 
         //时间控制
         if (this.time_count_down > 0 && this.time_count_down < 100000)
@@ -195,6 +195,11 @@ var RaceLayer = cc.Layer.extend({
     },
 
     initZhaLan: function () {
+        if (this._zhalan_front)
+        {
+            this._zhalan_front.removeFromParent();
+            this._zhalan_front = null;
+        }
         var size = cc.winSize;
         var frame =cc.spriteFrameCache.getSpriteFrame("zha_00000.png");
         this._zhalan = cc.Sprite.create(frame);
@@ -250,7 +255,7 @@ var RaceLayer = cc.Layer.extend({
         this.label_bg.setVisible(true);
         this.label_tips.setVisible(true);
         this.label_tips.setString("本期已结束");
-        this.initZhaLan();
+        this.horseinit();
         this.showReward();
     },
 
@@ -355,9 +360,10 @@ var RaceLayer = cc.Layer.extend({
     },
 
     horseReset: function () {
+        // this.horseinit();
         var size = cc.winSize;
-        var offsetX = 225;
-        var offsetY = 180;
+        var offsetX = 215;
+        var offsetY = 170;
         if (this.sp_horse_vector.length > 1)
         {
             for (var i = 0; i < this.sp_horse_vector.length; i++)
@@ -366,11 +372,39 @@ var RaceLayer = cc.Layer.extend({
                 this.sp_horse_vector[i].stopAllActions();
             }
         }
+
         for (var i in this.node_num)
         {
             this.node_num[i].removeAllChildren();
         }
 
+    },
+    horseinit :function () {
+        var size = cc.winSize;
+        var offsetX = 215;
+        var offsetY = 170;
+        if (this.sp_horse_vector.length > 1)
+        {
+            for (var i = 0; i < this.sp_horse_vector.length; i++)
+            {
+                this.sp_horse_vector[i].setPosition(size.width - offsetX + i * 13.4, size.height - offsetY - i * 30);
+                this.sp_horse_vector[i].stopAllActions();
+            }
+        }
+
+        this.sp_horse_vector = [];
+
+        for(var i = 0; i < 10; ++i)
+        {
+            var horse = new Horse(i, 1);
+            horse.setScale(0.65);
+            horse.setPosition(size.width - offsetX + i * 13.4, size.height - offsetY - i * 30);
+            horse.tag = i;
+            this.sp_horse_vector.push(horse);
+            this.addChild(horse);
+        }
+
+        this.initZhaLan();
     },
 
     addAllNum: function () {
@@ -385,19 +419,19 @@ var RaceLayer = cc.Layer.extend({
             this.node_num[idx].addChild(sp);
             idx++;
         }
-        var offsetX = 225;
-        var offsetY = 180;
-        idx = 0;
-        for(var i = 0; i < 10; ++i)
-        {
-            var horse = new Horse(i, 1);
-            horse.setScale(0.55);
-            horse.setPosition(size.width - offsetX + idx * 13.4, size.height - offsetY - idx * 30);
-            horse.tag = idx;
-            idx++;
-            this.sp_horse_vector.push(horse);
-            this.addChild(horse);
-        }
+        // var offsetX = 215;
+        // var offsetY = 170;
+        // idx = 0;
+        // for(var i = 0; i < 10; ++i)
+        // {
+        //     var horse = new Horse(i, 1);
+        //     horse.setScale(0.65);
+        //     horse.setPosition(size.width - offsetX + idx * 13.4, size.height - offsetY - idx * 30);
+        //     horse.tag = idx;
+        //     idx++;
+        //     this.sp_horse_vector.push(horse);
+        //     this.addChild(horse);
+        // }
     },
 
     resetHorseVector:function () {
@@ -422,7 +456,7 @@ var RaceLayer = cc.Layer.extend({
     //配置文件有顺序
     horseRunWithConfig: function () {
         var size = cc.winSize;
-        var offsetY = 180;
+        var offsetY = 170;
         this.target_arr = [];
         var tempRandom = 10;
         for (var i = 0; i < this.sp_horse_vector.length; i++)
@@ -453,7 +487,7 @@ var RaceLayer = cc.Layer.extend({
     //配置文件无顺序
     horseRunWithoutConfig: function () {
         var size = cc.winSize;
-        var offsetY = 180;
+        var offsetY = 170;
         this.target_arr = [];
         for (var i = 0; i < this.sp_horse_vector.length; i++)
         {
