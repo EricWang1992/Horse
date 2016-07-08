@@ -59,7 +59,7 @@ var RaceLayer = cc.Layer.extend({
         this.label_tips.setVisible(this.time_count_down > 0);
 
         //debug
-        // this.time_count_down = 3;
+        this.time_count_down = 3;
 
         if (this.time_count_down > 0 && this.time_count_down < 100000)
         {
@@ -240,9 +240,10 @@ var RaceLayer = cc.Layer.extend({
 
 
         this._scrollview.setContentOffsetInDuration(cc.p(0,0),10);
-        this.scheduleUpdate();
+        // this.scheduleUpdate();
+        this.schedule(this.updatePerMS, 0.3);
         this.scheduleOnce(function () {
-            this.unscheduleUpdate();
+            this.unschedule(this.updatePerMS);
         }, 10.0);
         this.scheduleOnce(this.reachTheTarget, 10.0);
     },
@@ -548,7 +549,7 @@ var RaceLayer = cc.Layer.extend({
         return sequence;
     },
 
-    update: function () {
+    updatePerMS: function () {
         var arr = this.sp_horse_vector.sort(this.sortNum);
         this.updateNumPos(arr);
     },

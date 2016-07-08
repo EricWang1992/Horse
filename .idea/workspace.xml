@@ -2,6 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d94735b5-5e3b-48f8-b4e1-590aed7188bb" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/build.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/game.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/project.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/HelloWorld.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/Horse.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/Horse.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/Horse_jump.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/Horse_jump.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/bg.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/config.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/content.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/countdown.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/grass_content.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/grass_content.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/loading.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/num.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/num.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/reward.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/rewardboard.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/sound1.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/sound2.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/stars.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/time.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/zhalan_front.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RaceScene.js" afterPath="$PROJECT_DIR$/src/RaceScene.js" />
     </list>
@@ -27,19 +53,11 @@
       <file leaf-file-name="project.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/config.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="361">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding>
+                <marker date="1467961772000" expanded="true" signature="385:396" ph="[...]" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -47,19 +65,9 @@
       <file leaf-file-name="RaceScene.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RaceScene.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="61" column="36" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
-              <folding>
-                <element signature="e#4098#5729#0" expanded="false" />
-                <element signature="e#9907#10534#0" expanded="false" />
-                <element signature="e#10566#10836#0" expanded="false" />
-                <element signature="e#13295#13332#0" expanded="false" />
-                <element signature="e#13361#13540#0" expanded="false" />
-                <element signature="e#15825#15870#0" expanded="false" />
-                <element signature="e#15925#16629#0" expanded="false" />
-                <element signature="e#16785#16844#0" expanded="false" />
-                <element signature="e#17225#17577#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="207">
+              <caret line="552" column="43" selection-start-line="552" selection-start-column="39" selection-end-line="552" selection-end-column="43" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -77,9 +85,11 @@
       <file leaf-file-name="Horse.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Horse.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="836">
-              <caret line="44" column="48" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="48" />
-              <folding />
+            <state relative-caret-position="133">
+              <caret line="82" column="3" selection-start-line="82" selection-start-column="3" selection-end-line="82" selection-end-column="3" />
+              <folding>
+                <marker date="1467961772000" expanded="true" signature="55:2310" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,7 +109,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="418">
               <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
-              <folding />
+              <folding>
+                <marker date="1467961772000" expanded="true" signature="10:16" ph="{&quot;HelloWorld_png&quot;: &quot;res/HelloWorld.png&quot;...}" />
+                <marker date="1467961772000" expanded="true" signature="833:847" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -141,9 +154,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-21" />
-    <option name="width" value="1924" />
-    <option name="height" value="1056" />
+    <option name="x" value="36" />
+    <option name="y" value="23" />
+    <option name="width" value="1680" />
+    <option name="height" value="972" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -170,7 +184,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -220,6 +233,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -229,6 +243,7 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
   </component>
   <component name="RunManager" selected="JavaScript Debug.index.html">
     <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Horse/index.html">
@@ -326,17 +341,18 @@
       <workItem from="1467433879503" duration="13766000" />
       <workItem from="1467519275632" duration="3119000" />
       <workItem from="1467899728634" duration="1521000" />
+      <workItem from="1467961832695" duration="1832000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88706000" />
+    <option name="totallyTimeSpent" value="90538000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-21" y="0" width="1924" height="1056" extended-state="0" />
+    <frame x="36" y="23" width="1680" height="972" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1802935" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1797619" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -344,7 +360,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25027204" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24916944" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -614,9 +630,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Horse.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
-          <caret line="44" column="48" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="48" />
-          <folding />
+        <state relative-caret-position="133">
+          <caret line="82" column="3" selection-start-line="82" selection-start-column="3" selection-end-line="82" selection-end-column="3" />
+          <folding>
+            <marker date="1467961772000" expanded="true" signature="55:2310" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -644,9 +662,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/project.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="361">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <marker date="1467961772000" expanded="true" signature="385:396" ph="[...]" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -654,7 +674,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -662,25 +681,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
-          <folding />
+          <folding>
+            <marker date="1467961772000" expanded="true" signature="10:16" ph="{&quot;HelloWorld_png&quot;: &quot;res/HelloWorld.png&quot;...}" />
+            <marker date="1467961772000" expanded="true" signature="833:847" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RaceScene.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="61" column="36" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
-          <folding>
-            <element signature="e#4098#5729#0" expanded="false" />
-            <element signature="e#9907#10534#0" expanded="false" />
-            <element signature="e#10566#10836#0" expanded="false" />
-            <element signature="e#13295#13332#0" expanded="false" />
-            <element signature="e#13361#13540#0" expanded="false" />
-            <element signature="e#15825#15870#0" expanded="false" />
-            <element signature="e#15925#16629#0" expanded="false" />
-            <element signature="e#16785#16844#0" expanded="false" />
-            <element signature="e#17225#17577#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="207">
+          <caret line="552" column="43" selection-start-line="552" selection-start-column="39" selection-end-line="552" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
