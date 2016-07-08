@@ -2,6 +2,13 @@
  * Created by ericwang on 6/23/16.
  */
 
+//自定义类
+var Num = {
+    _id : null,
+    _positionX : null,
+    _rank : null
+};
+
 var RaceLayer = cc.Layer.extend({
     bgSprite: null,
     node_num: null,
@@ -31,6 +38,7 @@ var RaceLayer = cc.Layer.extend({
     _scrollview : null,
     _zhalan : null,
     _zhalan_front : null,
+    _rank : null,
     ctor: function () {
         this._super();
 
@@ -40,6 +48,18 @@ var RaceLayer = cc.Layer.extend({
         this.sp_num_vector = [];
         //sp_horse_vector
         this.sp_horse_vector = [];
+        this._rank = [];
+        this._num = 0;
+
+        for (var i = 0; i < 10; ++i)
+        {
+            var num = Object.create(Num);
+            num._id = i;
+            num._positionX = 0;
+            num._rank = i;
+            this._rank.push(num);
+        }
+
         var size = cc.winSize;
 
         //读取json文件
@@ -90,18 +110,6 @@ var RaceLayer = cc.Layer.extend({
 
         this.createScrollView();
 
-        //node_num
-        this.node_num = [];
-        for (var i = 0; i < 10; i++)
-        {
-            var node = new cc.Node();
-            node.attr({
-                x : 80 + i * 60,
-                y : 590
-            });
-            this.node_num.push(node);
-            this.addChild(node);
-        }
         //添加所有数字
         this.addAllNum();
         this.horseinit();
@@ -240,7 +248,6 @@ var RaceLayer = cc.Layer.extend({
 
 
         this._scrollview.setContentOffsetInDuration(cc.p(0,0),10);
-        // this.scheduleUpdate();
         this.schedule(this.updatePerMS, 0.3);
         this.scheduleOnce(function () {
             this.unschedule(this.updatePerMS);
@@ -293,12 +300,7 @@ var RaceLayer = cc.Layer.extend({
         this.runAction(cc.sequence(cc.delayTime(10), cc.callFunc(function () {
             this.resetHorseVector();
             this.horseReset();
-
-            var arr = this.sp_horse_vector.sort();
-            this.updateNumPos(arr);
-
-            var size = cc.winSize;
-
+            this.numReset();
         },this)));
     },
 
@@ -361,7 +363,6 @@ var RaceLayer = cc.Layer.extend({
     },
 
     horseReset: function () {
-        // this.horseinit();
         var size = cc.winSize;
         var offsetX = 215;
         var offsetY = 170;
@@ -373,13 +374,15 @@ var RaceLayer = cc.Layer.extend({
                 this.sp_horse_vector[i].stopAllActions();
             }
         }
-
-        for (var i in this.node_num)
-        {
-            this.node_num[i].removeAllChildren();
-        }
-
     },
+    numReset: function () {
+        for (var i = 0; i < 10; i++)
+        {
+            var sp = this.sp_num_vector[i];
+            sp.setPosition(cc.p(80+i*60, 590));
+        }
+    },
+
     horseinit :function () {
         var size = cc.winSize;
         var offsetX = 215;
@@ -417,26 +420,14 @@ var RaceLayer = cc.Layer.extend({
             var frame = cc.spriteFrameCache.getSpriteFrame(sp_name);
             var sp = cc.Sprite.create(frame);
             this.sp_num_vector.push(sp);
-            this.node_num[idx].addChild(sp);
+            sp.setPosition(cc.p(80+idx*60, 590));
+            this.addChild(sp);
             idx++;
         }
-        // var offsetX = 215;
-        // var offsetY = 170;
-        // idx = 0;
-        // for(var i = 0; i < 10; ++i)
-        // {
-        //     var horse = new Horse(i, 1);
-        //     horse.setScale(0.65);
-        //     horse.setPosition(size.width - offsetX + idx * 13.4, size.height - offsetY - idx * 30);
-        //     horse.tag = idx;
-        //     idx++;
-        //     this.sp_horse_vector.push(horse);
-        //     this.addChild(horse);
-        // }
     },
 
     resetHorseVector:function () {
-      this.sp_horse_vector.sort(this.sortByTag);
+        this.sortArray(this.sp_horse_vector, 1);
     },
 
     sortByTag: function (a, b) {
@@ -506,19 +497,16 @@ var RaceLayer = cc.Layer.extend({
     },
 
     reachTheTarget:function () {
-        var arr =  this.target_arr.sort(this.sortByRandom);
-        for (var i in this.node_num)
-        {
-            this.node_num[i].removeAllChildren();
-        }
+        // var arr =  this.target_arr.sort(this.sortByRandom);
+        var arr = this.sortArray(this.target_arr, 2);
         var j = 0;
         for (var i in arr)
         {
             var idx = arr[i].tag;
-            this.node_num[j].addChild(this.sp_num_vector[idx]);
             j++;
             this.sp_horse_vector[idx].runAction(cc.moveBy(2,-400,0));
         }
+        this.updateNumPos(null);
         this.runAction(cc.sequence(cc.delayTime(2),cc.callFunc(this.finishGame, this)));
     },
 
@@ -550,8 +538,28 @@ var RaceLayer = cc.Layer.extend({
     },
 
     updatePerMS: function () {
-        var arr = this.sp_horse_vector.sort(this.sortNum);
-        this.updateNumPos(arr);
+        for(var i = 0; i < 10; i++)
+        {
+            this._rank[i]._positionX = this.sp_horse_vector[i].getPositionX();
+        }
+        this.sortArray(this._rank, 0);
+        var str = "";
+        for (var i = 0; i < 10;i++)
+        {
+            str += this._rank[i]._id + " ";
+        }
+
+        var str1 = "";
+        for(var i = 0; i < 10; i++)
+        {
+            var id = this._rank[i]._id;
+            str1 += id + " ";
+            var sp = this.sp_num_vector[id];
+            sp.setPosition(cc.p(80+i*60, 590));
+        }
+    },
+    sortByPositionX: function (a, b) {
+        return a._positionX > b._positionX;
     },
 
     sortNum: function (a,b) {
@@ -559,31 +567,133 @@ var RaceLayer = cc.Layer.extend({
     },
 
     updateNumPos: function (arr) {
-        for (var i in this.node_num)
+        for (var i = 0;i < 10; i++)
         {
-            this.node_num[i].removeAllChildren();
-        }
-        var j = 0;
-        for (var i in arr)
-        {
-            var idx = arr[i].tag;
-            this.node_num[j].addChild(this.sp_num_vector[idx]);
-            j++;
+            var idx = this.order[i] - 1;
+            var sp = this.sp_num_vector[idx];
+            sp.setPosition(cc.p(80+60*i,590));
         }
     },
 
-    newSchedule: function (callback, interval) {
-        var then = Date.now();
-        interval = interval*1000;
-        this.schedule(function () {
-            var now = Date.now();
-            var delta = now - then;
-            if (delta > interval)
+    // newSchedule: function (callback, interval) {
+    //     var then = Date.now();
+    //     interval = interval*1000;
+    //     this.schedule(function () {
+    //         var now = Date.now();
+    //         var delta = now - then;
+    //         if (delta > interval)
+    //         {
+    //             then = now - (delta % interval);
+    //             callback.call(this);
+    //         }
+    //     }.bind(this), 0);
+    // },
+    //sortArray
+    swap :function (items, firstIndex, secondIndex) {
+        var temp = items[firstIndex];
+        items[firstIndex] = items[secondIndex];
+        items[secondIndex] = temp;
+    },
+    partitionByPosX: function (items, left, right) {
+        var pivot = items[Math.floor((right + left) / 2)]._positionX;
+        var i = left;
+        var j = right;
+        while (i <= j)
+        {
+            while (items[i]._positionX < pivot)
             {
-                then = now - (delta % interval);
-                callback.call(this);
+                i++;
             }
-        }.bind(this), 0);
+            while (items[j]._positionX > pivot)
+            {
+                j--;
+            }
+            if (i <= j)
+            {
+                this.swap(items, i, j);
+                i++;
+                j--;
+            }
+        }
+        return i;
+    },
+    partitionByTag: function (items, left, right) {
+        var pivot = items[Math.floor((right + left) / 2)].tag;
+        var i = left;
+        var j = right;
+        while (i <= j)
+        {
+            while (items[i].tag < pivot)
+            {
+                i++;
+            }
+            while (items[j].tag > pivot)
+            {
+                j--;
+            }
+            if (i <= j)
+            {
+                this.swap(items, i, j);
+                i++;
+                j--;
+            }
+        }
+        return i;
+    },
+    partitionByRandom: function (items, left, right) {
+        var pivot = items[Math.floor((right + left) / 2)]._random;
+        var i = left;
+        var j = right;
+        while (i <= j)
+        {
+            while (items[i]._random < pivot)
+            {
+                i++;
+            }
+            while (items[j]._random > pivot)
+            {
+                j--;
+            }
+            if (i <= j)
+            {
+                this.swap(items, i, j);
+                i++;
+                j--;
+            }
+        }
+        return i;
+    },
+    quickSort :function (arr, left, right, type) {
+        var index;
+        if (arr.length > 1)
+        {
+            if (type == 0)
+            {
+                index = this.partitionByPosX(arr, left, right);
+            }
+            else if(type == 1)
+            {
+                index = this.partitionByTag(arr, left, right);
+            }
+            else
+            {
+                index = this.partitionByRandom(arr, left, right);
+            }
+
+            if (left < index - 1)
+            {
+                this.quickSort(arr, left, index - 1, type);
+            }
+
+            if (index < right)
+            {
+                this.quickSort(arr, index , right, type);
+            }
+        }
+        return arr;
+    },
+    sortArray : function (arr, type) {
+        return this.quickSort(arr, 0, arr.length-1, type);
     },
 
     //总的定时器

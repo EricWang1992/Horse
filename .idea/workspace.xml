@@ -2,33 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d94735b5-5e3b-48f8-b4e1-590aed7188bb" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/build.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/game.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/project.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/HelloWorld.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/Horse.plist" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/Horse.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/Horse_jump.plist" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/Horse_jump.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/bg.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/config.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/content.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/countdown.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/grass_content.plist" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/grass_content.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/loading.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/num.plist" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/num.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/reward.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/rewardboard.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/sound1.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/sound2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/stars.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/time.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/publish/html5/res/zhalan_front.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/config.json" afterPath="$PROJECT_DIR$/res/config.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RaceScene.js" afterPath="$PROJECT_DIR$/src/RaceScene.js" />
     </list>
     <ignored path="Horse.iws" />
@@ -65,8 +40,30 @@
       <file leaf-file-name="RaceScene.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RaceScene.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="552" column="43" selection-start-line="552" selection-start-column="39" selection-end-line="552" selection-end-column="43" />
+            <state relative-caret-position="313">
+              <caret line="552" column="35" selection-start-line="552" selection-start-column="35" selection-end-line="552" selection-end-column="35" />
+              <folding>
+                <element signature="e#9326#9849#0" expanded="false" />
+                <element signature="e#9887#10514#0" expanded="false" />
+                <element signature="e#10546#10816#0" expanded="false" />
+                <element signature="e#11488#12314#0" expanded="false" />
+                <element signature="e#12955#13134#0" expanded="false" />
+                <element signature="e#13187#14146#0" expanded="false" />
+                <element signature="e#14202#14835#0" expanded="false" />
+                <element signature="e#15438#16142#0" expanded="false" />
+                <element signature="e#17140#17187#0" expanded="false" />
+                <element signature="e#20320#20871#0" expanded="false" />
+                <element signature="e#20915#21509#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EcmaScript.js" pinned="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="147" column="46" selection-start-line="147" selection-start-column="46" selection-end-line="147" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -75,7 +72,7 @@
       <file leaf-file-name="CCScheduler.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/core/CCScheduler.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2717">
+            <state relative-caret-position="512">
               <caret line="167" column="20" selection-start-line="167" selection-start-column="20" selection-end-line="167" selection-end-column="20" />
               <folding />
             </state>
@@ -85,7 +82,7 @@
       <file leaf-file-name="Horse.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Horse.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
+            <state relative-caret-position="1558">
               <caret line="82" column="3" selection-start-line="82" selection-start-column="3" selection-end-line="82" selection-end-column="3" />
               <folding>
                 <marker date="1467961772000" expanded="true" signature="55:2310" ph="{...}" />
@@ -111,7 +108,6 @@
               <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
               <folding>
                 <marker date="1467961772000" expanded="true" signature="10:16" ph="{&quot;HelloWorld_png&quot;: &quot;res/HelloWorld.png&quot;...}" />
-                <marker date="1467961772000" expanded="true" signature="833:847" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -154,10 +150,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="36" />
+    <option name="x" value="119" />
     <option name="y" value="23" />
     <option name="width" value="1680" />
-    <option name="height" value="972" />
+    <option name="height" value="932" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -240,7 +236,7 @@
     <property name="last_opened_file_path" value="D:/cocos2d-x-3.11.1/tests/js-tests" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
+    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
@@ -341,15 +337,16 @@
       <workItem from="1467433879503" duration="13766000" />
       <workItem from="1467519275632" duration="3119000" />
       <workItem from="1467899728634" duration="1521000" />
-      <workItem from="1467961832695" duration="1832000" />
+      <workItem from="1467961832695" duration="4798000" />
+      <workItem from="1467968454654" duration="10981000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90538000" />
+    <option name="totallyTimeSpent" value="104485000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="36" y="23" width="1680" height="972" extended-state="0" />
+    <frame x="119" y="23" width="1680" height="932" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1797619" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -360,7 +357,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24916944" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3105446" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -401,7 +398,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="79" />
+      <option name="time" value="92" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -630,7 +627,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Horse.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
+        <state relative-caret-position="1558">
           <caret line="82" column="3" selection-start-line="82" selection-start-column="3" selection-end-line="82" selection-end-column="3" />
           <folding>
             <marker date="1467961772000" expanded="true" signature="55:2310" ph="{...}" />
@@ -638,25 +635,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/core/CCScheduler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2717">
-          <caret line="167" column="20" selection-start-line="167" selection-start-column="20" selection-end-line="167" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-x/cocos/scripting/js-bindings/script/debugger/actors/script.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="346" column="2" selection-start-line="346" selection-start-column="2" selection-end-line="346" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-407">
-          <caret line="128" column="37" selection-start-line="128" selection-start-column="32" selection-end-line="128" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -683,16 +665,43 @@
           <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
           <folding>
             <marker date="1467961772000" expanded="true" signature="10:16" ph="{&quot;HelloWorld_png&quot;: &quot;res/HelloWorld.png&quot;...}" />
-            <marker date="1467961772000" expanded="true" signature="833:847" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/core/CCScheduler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="167" column="20" selection-start-line="167" selection-start-column="20" selection-end-line="167" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="147" column="46" selection-start-line="147" selection-start-column="46" selection-end-line="147" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RaceScene.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="552" column="43" selection-start-line="552" selection-start-column="39" selection-end-line="552" selection-end-column="43" />
-          <folding />
+        <state relative-caret-position="313">
+          <caret line="552" column="35" selection-start-line="552" selection-start-column="35" selection-end-line="552" selection-end-column="35" />
+          <folding>
+            <element signature="e#9326#9849#0" expanded="false" />
+            <element signature="e#9887#10514#0" expanded="false" />
+            <element signature="e#10546#10816#0" expanded="false" />
+            <element signature="e#11488#12314#0" expanded="false" />
+            <element signature="e#12955#13134#0" expanded="false" />
+            <element signature="e#13187#14146#0" expanded="false" />
+            <element signature="e#14202#14835#0" expanded="false" />
+            <element signature="e#15438#16142#0" expanded="false" />
+            <element signature="e#17140#17187#0" expanded="false" />
+            <element signature="e#20320#20871#0" expanded="false" />
+            <element signature="e#20915#21509#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
